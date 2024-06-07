@@ -5,9 +5,9 @@ import HomePage from "./pages/HomePage";
 import RootLayout from "./pages/Root";
 import MoviesPage, { loader as movieLoader } from "./pages/MoviesPage";
 import FavoritesPage from "./pages/FavoritesPage";
-import MovieDetails, {
+import MovieDetails/* , {
   loader as movieDetailsLoader,
-} from "./pages/MovieDetails";
+} */ from "./pages/MovieDetails";
 
 const router = createBrowserRouter([
   {
@@ -24,7 +24,7 @@ const router = createBrowserRouter([
       {
         path: "movies/:id",
         element: <MovieDetails />,
-        loader: movieDetailsLoader,
+        /* loader: movieDetailsLoader, */
       },
       {
         path: "movies/favorites",

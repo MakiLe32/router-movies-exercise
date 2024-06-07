@@ -19,11 +19,21 @@ export default function FavoritesPage() {
           <div
             style={{
               margin: "3rem",
+              backgroundColor: "rgba(66, 56, 87, 0.25)",
+              padding: '0.5rem',
+              maxWidth: '40rem',
+              borderRadius: '5px'
             }}
             key={movie.id}
           >
-            <h2>{movie.movie}</h2>
-            <div style={{display: "flex", justifyContent: 'space-around', maxWidth: '20rem'}}>
+            <li style={{ margin: "0", fontSize: "1.5rem" }}>{movie.movie}</li>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-around",
+                maxWidth: "20rem",
+              }}
+            >
               <p>
                 <a
                   style={{ textDecoration: "none", color: "inherit" }}
@@ -32,7 +42,10 @@ export default function FavoritesPage() {
                   IMDb
                 </a>
               </p>
-              <button className="button" onClick={() => handleRemoveClick(movie.id)}>
+              <button
+                className="button"
+                onClick={() => handleRemoveClick(movie.id)}
+              >
                 Remove
               </button>
             </div>

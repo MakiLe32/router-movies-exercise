@@ -1,12 +1,25 @@
-import { Link } from "react-router-dom";
-import classes from "./MovieList.module.css";
 import { useState } from "react";
+import classes from "./MovieList.module.css";
+import MovieDetails from "../pages/MovieDetails";
+import Modal from "./Modal";
 
 export default function MovieList({ data }) {
   const [displayCount, setDisplayCount] = useState(6);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [selectedMovie, setSelectedMovie] = useState(null);
 
   const loadMoreMovies = () => {
     setDisplayCount((prevCount) => prevCount + 6);
+  };
+
+  const openModal = (movie) => {
+    setSelectedMovie(movie);
+    setModalIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalIsOpen(false);
+    setSelectedMovie(null);
   };
 
   return (
@@ -32,8 +45,10 @@ export default function MovieList({ data }) {
                       IMDb
                     </a>
                   </p>
-                  <div className={classes.details}>
-                    <Link to={`${item.id}`}>See movie detail</Link>
+                  <div>
+                    <button className={classes.details} onClick={() => openModal(item)}>
+                      See movie detail
+                    </button>
                   </div>
                 </div>
               </li>
@@ -50,6 +65,14 @@ export default function MovieList({ data }) {
       ) : (
         <p>Loading...</p>
       )}
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        contentLabel="Movie Details"
+        onClose={closeModal}
+      >
+        {selectedMovie && <MovieDetails movie={selectedMovie} />}
+      </Modal>
     </div>
   );
 }

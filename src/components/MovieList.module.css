@@ -55,6 +55,8 @@
   width: 100%;
   background-color: rgba(38, 32, 50, 0.87);
   color: #ffcf6e;
+  border: transparent;
+  font: inherit;
 }
 
 .details:hover {
