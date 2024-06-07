@@ -7,6 +7,11 @@ export default function MovieList({ data }) {
   const [displayCount, setDisplayCount] = useState(6);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [selectedMovie, setSelectedMovie] = useState(null);
+  const [image, setImage] = useState(data.image);
+
+  if (!image) {
+    setImage('./movienight.png')
+  }
 
   const loadMoreMovies = () => {
     setDisplayCount((prevCount) => prevCount + 6);
@@ -30,7 +35,7 @@ export default function MovieList({ data }) {
             {data.slice(0, displayCount).map((item) => (
               <li key={item.id} className={classes.item}>
                 <div>
-                  <img src="" alt={item.movie} />
+                  <img alt={item.movie} src={image} />
                   <div>
                     <h5>{item.movie}</h5>
                   </div>
@@ -71,7 +76,7 @@ export default function MovieList({ data }) {
         contentLabel="Movie Details"
         onClose={closeModal}
       >
-        {selectedMovie && <MovieDetails movie={selectedMovie} />}
+        {selectedMovie && <MovieDetails img={image} movie={selectedMovie} />}
       </Modal>
     </div>
   );

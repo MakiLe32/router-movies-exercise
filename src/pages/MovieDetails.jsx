@@ -1,7 +1,8 @@
 import { useState } from "react";
 
-export default function MovieDetails({ movie }) {
+export default function MovieDetails({ movie, img }) {
   const [paragr, setParagr] = useState(false);
+
   console.log(movie);
 
   function handleClick() {
@@ -20,7 +21,7 @@ export default function MovieDetails({ movie }) {
   return (
     <div className="movie-item">
       <article>
-        <img src={movie.image} alt={movie.movie} />
+        <img src={img} alt={movie.movie} />
         <h1>{movie.movie}</h1>
         <p>{movie.rating}</p>
         <p>
