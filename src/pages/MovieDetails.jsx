@@ -29,7 +29,7 @@ export default function MovieDetails() {
         <p>
           <a href={data.imdb_url}>IMDb</a>
         </p>
-        {paragr ? <p>Added to favorites!</p> : <p style={{color: 'rgba(0, 0, 0, 0.3)'}}>...</p>}
+        {paragr ? <p style={{color: '#ffd37c', fontWeight: 'bold'}}>Added to favorites!</p> : <p style={{color: 'rgba(0, 0, 0, 0.3)'}}>...</p>}
         <button className="movie-item-fav" onClick={handleClick}>
           Add to favorites
         </button>
